@@ -1,0 +1,111 @@
+# .NET Core
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Dependencies
+packages/
+*.nupkg
+# except build/, which is used as an MSBuild target
+!**/packages/build/
+
+# .NET Aspire
+.aspire/
+
+# MAUI specific
+# Android
+android/[Bb]uild/
+android/.gradle
+android/captures/
+android/local.properties
+android/.idea/libraries
+android/.idea/gradle.xml
+android/.idea/workspace.xml
+
+# iOS
+ios/build/
+ios/DerivedData/
+ios/.idea/
+ios/.vagrant/
+ios/Pods/
+ios/Carthage/
+ios/fastlane/report.xml
+ios/fastlane/Preview.html
+ios/fastlane/screenshots
+ios/*.dSYM.zip
+ios/*.ipa
+ios/*.mobileprovision
+
+# Xamarin
+**/[Bb]in/
+**/[Oo]bj/
+.idea/
+**/*.xam
+
+# Logs
+*.log
+/logs
+
+# User-specific files
+*.rsuser
+*.userprefs
+
+# .NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Resharper cache files
+/_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Rider
+.idea/
+
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+[Bb]in/
+[Oo]bj/
+
+# SQL Server files
+*.mdf
+*.ldf

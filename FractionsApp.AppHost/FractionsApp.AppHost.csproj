@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.1.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>f24446c9-35e4-4840-b622-c266240528b3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FractionsApp.API\FractionsApp.API.csproj" />
+    <ProjectReference Include="..\FractionsApp.Shared\FractionsApp.Shared.csproj" />
+    <ProjectReference Include="..\FractionsApp.Web\FractionsApp.Web.csproj" />
+    <ProjectReference Include="..\FractionsApp.Maui\FractionsApp.Maui.csproj" />
+    <ProjectReference Include="..\FractionsApp.Web\FractionsApp.Web.csproj" />
+  </ItemGroup>
+
+</Project>

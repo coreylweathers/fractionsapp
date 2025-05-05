@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RazorLangVersion>8.0</RazorLangVersion>
+    <EnableRazorCompiledItemGeneration>true</EnableRazorCompiledItemGeneration>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Styles\" />
+    <Folder Include="Components\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>

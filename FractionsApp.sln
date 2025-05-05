@@ -1,0 +1,55 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36017.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.AppHost", "FractionsApp.AppHost\FractionsApp.AppHost.csproj", "{E1F266D6-3436-4869-BF75-7FAAE6A3356D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.ServiceDefaults", "FractionsApp.ServiceDefaults\FractionsApp.ServiceDefaults.csproj", "{B13EA94E-3C9B-BD1A-531E-4CE4EF9303F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.Web", "FractionsApp.Web\FractionsApp.Web.csproj", "{6D0A7B47-5E34-D5C3-136B-D14CEABE9E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.Maui", "FractionsApp.Maui\FractionsApp.Maui.csproj", "{6F44A398-C928-403B-B083-BE7ACA325647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.Shared", "FractionsApp.Shared\FractionsApp.Shared.csproj", "{50F584DE-35E0-49BA-9538-C83CD9BDB372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.API", "FractionsApp.API\FractionsApp.API.csproj", "{A3BB5DD7-EF35-2073-6612-F789784F8736}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1F266D6-3436-4869-BF75-7FAAE6A3356D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F266D6-3436-4869-BF75-7FAAE6A3356D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F266D6-3436-4869-BF75-7FAAE6A3356D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F266D6-3436-4869-BF75-7FAAE6A3356D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B13EA94E-3C9B-BD1A-531E-4CE4EF9303F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13EA94E-3C9B-BD1A-531E-4CE4EF9303F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13EA94E-3C9B-BD1A-531E-4CE4EF9303F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13EA94E-3C9B-BD1A-531E-4CE4EF9303F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D0A7B47-5E34-D5C3-136B-D14CEABE9E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0A7B47-5E34-D5C3-136B-D14CEABE9E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0A7B47-5E34-D5C3-136B-D14CEABE9E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0A7B47-5E34-D5C3-136B-D14CEABE9E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F44A398-C928-403B-B083-BE7ACA325647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F44A398-C928-403B-B083-BE7ACA325647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F44A398-C928-403B-B083-BE7ACA325647}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6F44A398-C928-403B-B083-BE7ACA325647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F44A398-C928-403B-B083-BE7ACA325647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F584DE-35E0-49BA-9538-C83CD9BDB372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F584DE-35E0-49BA-9538-C83CD9BDB372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F584DE-35E0-49BA-9538-C83CD9BDB372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F584DE-35E0-49BA-9538-C83CD9BDB372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3BB5DD7-EF35-2073-6612-F789784F8736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BB5DD7-EF35-2073-6612-F789784F8736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BB5DD7-EF35-2073-6612-F789784F8736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BB5DD7-EF35-2073-6612-F789784F8736}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9F4D468-2D07-4691-82C7-7BA3004DD478}
+	EndGlobalSection
+EndGlobal

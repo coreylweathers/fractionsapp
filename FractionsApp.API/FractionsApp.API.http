@@ -1,0 +1,6 @@
+@FractionsApp.API_HostAddress = http://localhost:5160
+
+GET {{FractionsApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
