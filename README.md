@@ -47,4 +47,4 @@ Replace the framework with your target platform (android, ios, etc.)
 
 ## License
 
-[MIT License](LICENSE)
+This project is currently proprietary and not available for open source use. A license may be added in the future if the decision is made to open source the project.
