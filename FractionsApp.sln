@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.Shared", "Frac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.API", "FractionsApp.API\FractionsApp.API.csproj", "{A3BB5DD7-EF35-2073-6612-F789784F8736}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.Data.MigrationsService", "FractionsApp.Data.MigrationsService\FractionsApp.Data.MigrationsService.csproj", "{053F6EDD-2E6C-11F0-9DAE-87C9118A9540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionsApp.Data.Migrations", "FractionsApp.Data.Migrations\FractionsApp.Data.Migrations.csproj", "{4C3825AC-2E6C-11F0-AC65-619377C96725}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83CC9650-8F3F-4C55-BFC3-338A9B0F8F1D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -51,6 +55,14 @@ Global
 		{A3BB5DD7-EF35-2073-6612-F789784F8736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3BB5DD7-EF35-2073-6612-F789784F8736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3BB5DD7-EF35-2073-6612-F789784F8736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053F6EDD-2E6C-11F0-9DAE-87C9118A9540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053F6EDD-2E6C-11F0-9DAE-87C9118A9540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053F6EDD-2E6C-11F0-9DAE-87C9118A9540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053F6EDD-2E6C-11F0-9DAE-87C9118A9540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3825AC-2E6C-11F0-AC65-619377C96725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3825AC-2E6C-11F0-AC65-619377C96725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3825AC-2E6C-11F0-AC65-619377C96725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3825AC-2E6C-11F0-AC65-619377C96725}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
