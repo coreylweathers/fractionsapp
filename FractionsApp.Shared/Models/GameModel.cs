@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FractionsApp.Shared.Models
+namespace FractionsApp.Shared.Models;
+
+public class GameModel
 {
-    internal class GameModel
-    {
-    }
 }

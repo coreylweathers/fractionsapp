@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FractionsApp.Shared.Utilities
+namespace FractionsApp.Shared.Utilities;
+
+internal class UIUtilities
 {
-    internal class UIUtilities
-    {
-    }
 }

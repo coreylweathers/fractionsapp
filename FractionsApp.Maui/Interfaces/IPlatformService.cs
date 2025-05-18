@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FractionsApp.Maui.Interfaces
+namespace FractionsApp.Maui.Interfaces;
+
+public  interface IPlatformService
 {
-    public  interface IPlatformService
-    {
-        string GetPlatformName();
-    }
+    string GetPlatformName();
 }

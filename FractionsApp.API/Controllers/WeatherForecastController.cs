@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace FractionsApp.API.Controllers;
+namespace FractionsApp.Shared.Controllers;
 
 [ApiController]
 [Route("[controller]")]

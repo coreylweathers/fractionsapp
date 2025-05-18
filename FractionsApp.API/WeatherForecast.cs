@@ -1,4 +1,4 @@
-namespace FractionsApp.API;
+namespace FractionsApp.Shared;
 
 public class WeatherForecast
 {

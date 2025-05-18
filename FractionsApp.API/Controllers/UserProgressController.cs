@@ -1,131 +1,130 @@
-using FractionsApp.Data.Interfaces;
+using FractionsApp.Shared.Data.Interfaces;
 using FractionsApp.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FractionsApp.API.Controllers
+namespace FractionsApp.Shared.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class UserProgressController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UserProgressController : ControllerBase
+    private readonly IUserProgressRepository _repository;
+    private readonly ILogger<UserProgressController> _logger;
+
+    public UserProgressController(IUserProgressRepository repository, ILogger<UserProgressController> logger)
     {
-        private readonly IUserProgressRepository _repository;
-        private readonly ILogger<UserProgressController> _logger;
+        _repository = repository;
+        _logger = logger;
+    }
 
-        public UserProgressController(IUserProgressRepository repository, ILogger<UserProgressController> logger)
+    [HttpGet("{userId}")]
+    public async Task<ActionResult<List<UserProgressModel>>> GetUserProgressByUserId(string userId)
+    {
+        try
         {
-            _repository = repository;
-            _logger = logger;
+            var progressItems = await _repository.GetUserProgressByUserIdAsync(userId);
+            return Ok(progressItems);
         }
-
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<List<UserProgressModel>>> GetUserProgressByUserId(string userId)
+        catch (Exception ex)
         {
-            try
-            {
-                var progressItems = await _repository.GetUserProgressByUserIdAsync(userId);
-                return Ok(progressItems);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error retrieving user progress for user {UserId}", userId);
-                return StatusCode(500, "Internal server error");
-            }
+            _logger.LogError(ex, "Error retrieving user progress for user {UserId}", userId);
+            return StatusCode(500, "Internal server error");
         }
+    }
 
-        [HttpGet("details/{id}")]
-        public async Task<ActionResult<UserProgressModel>> GetUserProgressById(Guid id)
+    [HttpGet("details/{id}")]
+    public async Task<ActionResult<UserProgressModel>> GetUserProgressById(Guid id)
+    {
+        try
         {
-            try
+            var progress = await _repository.GetUserProgressByIdAsync(id);
+            if (progress == null)
             {
-                var progress = await _repository.GetUserProgressByIdAsync(id);
-                if (progress == null)
-                {
-                    return NotFound();
-                }
-                return Ok(progress);
+                return NotFound();
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error retrieving user progress with ID {Id}", id);
-                return StatusCode(500, "Internal server error");
-            }
+            return Ok(progress);
         }
-
-        [HttpPost]
-        public async Task<ActionResult<UserProgressModel>> CreateUserProgress(UserProgressModel userProgress)
+        catch (Exception ex)
         {
-            try
-            {
-                var createdProgress = await _repository.CreateUserProgressAsync(userProgress);
-                return CreatedAtAction(nameof(GetUserProgressById), new { id = createdProgress.Id }, createdProgress);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error creating user progress");
-                return StatusCode(500, "Internal server error");
-            }
+            _logger.LogError(ex, "Error retrieving user progress with ID {Id}", id);
+            return StatusCode(500, "Internal server error");
         }
+    }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateUserProgress(Guid id, UserProgressModel userProgress)
+    [HttpPost]
+    public async Task<ActionResult<UserProgressModel>> CreateUserProgress(UserProgressModel userProgress)
+    {
+        try
         {
-            if (id != userProgress.Id)
-            {
-                return BadRequest("ID mismatch");
-            }
+            var createdProgress = await _repository.CreateUserProgressAsync(userProgress);
+            return CreatedAtAction(nameof(GetUserProgressById), new { id = createdProgress.Id }, createdProgress);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating user progress");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateUserProgress(Guid id, UserProgressModel userProgress)
+    {
+        if (id != userProgress.Id)
+        {
+            return BadRequest("ID mismatch");
+        }
             
-            try
-            {
-                await _repository.UpdateUserProgressAsync(userProgress);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error updating user progress with ID {Id}", id);
-                return StatusCode(500, "Internal server error");
-            }
-        }
-
-        [HttpPost("sync")]
-        public async Task<ActionResult<List<UserProgressModel>>> SyncUserProgress(List<UserProgressModel> progressItems)
+        try
         {
-            try
+            await _repository.UpdateUserProgressAsync(userProgress);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating user progress with ID {Id}", id);
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpPost("sync")]
+    public async Task<ActionResult<List<UserProgressModel>>> SyncUserProgress(List<UserProgressModel> progressItems)
+    {
+        try
+        {
+            var syncedItems = new List<UserProgressModel>();
+            foreach (var item in progressItems)
             {
-                var syncedItems = new List<UserProgressModel>();
-                foreach (var item in progressItems)
+                if (item.Id == Guid.Empty)
                 {
-                    if (item.Id == Guid.Empty)
-                    {
-                        syncedItems.Add(await _repository.CreateUserProgressAsync(item));
-                    }
-                    else
-                    {
-                        await _repository.UpdateUserProgressAsync(item);
-                        syncedItems.Add(item);
-                    }
+                    syncedItems.Add(await _repository.CreateUserProgressAsync(item));
                 }
-                return Ok(syncedItems);
+                else
+                {
+                    await _repository.UpdateUserProgressAsync(item);
+                    syncedItems.Add(item);
+                }
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error syncing user progress");
-                return StatusCode(500, "Internal server error");
-            }
+            return Ok(syncedItems);
         }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteUserProgress(Guid id)
+        catch (Exception ex)
         {
-            try
-            {
-                await _repository.DeleteUserProgressAsync(id);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error deleting user progress with ID {Id}", id);
-                return StatusCode(500, "Internal server error");
-            }
+            _logger.LogError(ex, "Error syncing user progress");
+            return StatusCode(500, "Internal server error");
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteUserProgress(Guid id)
+    {
+        try
+        {
+            await _repository.DeleteUserProgressAsync(id);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error deleting user progress with ID {Id}", id);
+            return StatusCode(500, "Internal server error");
         }
     }
 }

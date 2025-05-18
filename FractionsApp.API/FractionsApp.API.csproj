@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FractionsApp.ServiceDefaults\FractionsApp.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\FractionsApp.Shared\FractionsApp.Shared.csproj" />
   </ItemGroup>
 
 </Project>

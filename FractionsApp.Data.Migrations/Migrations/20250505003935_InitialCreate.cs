@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace FractionsApp.API.Data.Migrations
+namespace FractionsApp.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

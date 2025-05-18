@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FractionsApp.Shared.Services
+namespace FractionsApp.Shared.Services;
+
+internal class FractionService
 {
-    internal class FractionService
-    {
-    }
 }
