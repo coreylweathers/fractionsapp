@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FractionsApp.Shared.Controllers;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class ProblemSetsController : ControllerBase
 {

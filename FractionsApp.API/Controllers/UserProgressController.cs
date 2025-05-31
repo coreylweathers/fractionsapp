@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FractionsApp.Shared.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class UserProgressController : ControllerBase
 {
     private readonly IUserProgressRepository _repository;
