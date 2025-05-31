@@ -9,6 +9,11 @@
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+		
+		<!-- Adding to fix MsixPackage build error -->
+		<EnableMsixTooling>true</EnableMsixTooling>
+		<!--<PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>-->
+		
         <!-- Added for Blazor support -->
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
 
