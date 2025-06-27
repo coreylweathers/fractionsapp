@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace FractionsApp.Shared.Models;
 
-public class GameModel
+public record GameModel
 {
 }

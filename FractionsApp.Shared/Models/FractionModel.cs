@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FractionsApp.Shared.Models;
 
-public class FractionModel
+public record FractionModel
 {
     public Guid Id { get; set; }
     public int Numerator { get; set; }

@@ -8,7 +8,7 @@ namespace FractionsApp.Maui.Services;
 
 public class SQLiteService : ISQLiteService
 {
-    private SQLiteAsyncConnection _database;
+    private SQLiteAsyncConnection? _database; // Marked as nullable to resolve CS8618
     private readonly string _databasePath;
 
     public SQLiteService()
@@ -33,20 +33,20 @@ public class SQLiteService : ISQLiteService
     public async Task<List<UserProgressModel>> GetAllUserProgressAsync(string userId)
     {
         await SetupDatabaseAsync();
-        return await _database.Table<UserProgressModel>().Where(p => p.UserId == userId).ToListAsync();
+        return await _database!.Table<UserProgressModel>().Where(p => p.UserId == userId).ToListAsync();
     }
 
     public async Task<UserProgressModel> GetUserProgressAsync(Guid id)
     {
         await SetupDatabaseAsync();
-        return await _database.Table<UserProgressModel>().Where(p => p.Id == id).FirstOrDefaultAsync();
+        return await _database!.Table<UserProgressModel>().Where(p => p.Id == id).FirstOrDefaultAsync();
     }
 
     public async Task<int> SaveUserProgressAsync(UserProgressModel userProgress)
     {
         await SetupDatabaseAsync();
         if (userProgress.Id != Guid.Empty)
-            return await _database.UpdateAsync(userProgress);
+            return await _database!.UpdateAsync(userProgress);
         else
         {
             userProgress.CompletedDate = DateTime.Now;
@@ -58,13 +58,13 @@ public class SQLiteService : ISQLiteService
     public async Task<int> DeleteUserProgressAsync(UserProgressModel userProgress)
     {
         await SetupDatabaseAsync();
-        return await _database.DeleteAsync(userProgress);
+        return await _database!.DeleteAsync(userProgress);
     }
 
     public async Task<List<UserProgressModel>> GetUnsyncedUserProgressAsync(string userId)
     {
         await SetupDatabaseAsync();
-        return await _database.Table<UserProgressModel>().Where(p => p.UserId == userId && !p.IsSynced).ToListAsync();
+        return await _database!.Table<UserProgressModel>().Where(p => p.UserId == userId && !p.IsSynced).ToListAsync();
     }
 
     public async Task MarkAsSyncedAsync(Guid id)

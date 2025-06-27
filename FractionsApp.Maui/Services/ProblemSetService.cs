@@ -11,7 +11,7 @@ namespace FractionsApp.Maui.Services;
 public interface IProblemSetService
 {
     Task<List<ProblemSetModel>> GetAllProblemSetsAsync();
-    Task<ProblemSetModel> GetProblemSetByIdAsync(int id);
+    Task<ProblemSetModel?> GetProblemSetByIdAsync(int id);
     Task<List<ProblemSetModel>> GetProblemSetsByCategoryAsync(string category);
     Task<List<ProblemSetModel>> GetProblemSetsByDifficultyAsync(string difficulty);
 }

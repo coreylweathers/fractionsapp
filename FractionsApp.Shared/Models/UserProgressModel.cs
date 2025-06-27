@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FractionsApp.Shared.Models;
 
-public class UserProgressModel
+public record UserProgressModel
 {
     public Guid Id { get; set; }
     public string ActivityType { get; set; }
