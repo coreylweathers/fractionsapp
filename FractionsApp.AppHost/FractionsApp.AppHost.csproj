@@ -12,15 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.0" />
-    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.3.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.1" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FractionsApp.API\FractionsApp.API.csproj" />
-    <ProjectReference Include="..\FractionsApp.Shared\FractionsApp.Shared.csproj" />
+    <ProjectReference Include="..\FractionsApp.Shared\FractionsApp.Shared.csproj" IsAspireProjectResource="false" />
     <ProjectReference Include="..\FractionsApp.Web\FractionsApp.Web.csproj" />
-    <ProjectReference Include="..\FractionsApp.Maui\FractionsApp.Maui.csproj" />
   </ItemGroup>
 
 </Project>
