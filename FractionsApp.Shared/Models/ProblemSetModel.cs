@@ -10,9 +10,9 @@ public record ProblemSetModel
     public required string Description { get; set; } // Added 'required' modifier to ensure non-null value
     public required string Difficulty { get; set; } // Added 'required' modifier to ensure non-null value
     public required string Category { get; set; } // Added 'required' modifier to ensure non-null value
-    public List<FractionProblemModel> Problems { get; set; } = new List<FractionProblemModel>();
-    public DateTime CreatedDate { get; set; }
-    public DateTime? ModifiedDate { get; set; }
+    public List<FractionProblemModel> Problems { get; set; } = [];
+    public DateTimeOffset CreatedDate { get; set; }
+    public DateTimeOffset? ModifiedDate { get; set; } 
 }
 
 public record FractionProblemModel

@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FractionsApp.API\FractionsApp.API.csproj" />
+    <ProjectReference Include="..\FractionsApp.Data.MigrationsService\FractionsApp.Data.MigrationsService.csproj" />
     <ProjectReference Include="..\FractionsApp.Shared\FractionsApp.Shared.csproj" IsAspireProjectResource="false" />
     <ProjectReference Include="..\FractionsApp.Web\FractionsApp.Web.csproj" />
   </ItemGroup>

@@ -1,14 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-
 
 #nullable disable
 
-namespace FractionsApp.Data.Migrations
+namespace FractionsApp.Data.Migrations.Migrations
 {
     /// <inheritdoc />
-    public partial class AddProblemSetsAndFractions : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +15,7 @@ namespace FractionsApp.Data.Migrations
                 name: "Fractions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Numerator = table.Column<int>(type: "integer", nullable: false),
                     Denominator = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -31,8 +28,7 @@ namespace FractionsApp.Data.Migrations
                 name: "ProblemSets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Difficulty = table.Column<string>(type: "text", nullable: false),
@@ -46,20 +42,34 @@ namespace FractionsApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserProgress",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ActivityType = table.Column<string>(type: "text", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: false),
+                    CompletedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    IsSynced = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserProgress", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FractionProblems",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ProblemSetId = table.Column<int>(type: "integer", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProblemSetId = table.Column<Guid>(type: "uuid", nullable: false),
                     Question = table.Column<string>(type: "text", nullable: false),
                     Answer = table.Column<string>(type: "text", nullable: false),
                     Options = table.Column<string>(type: "text", nullable: false),
                     Explanation = table.Column<string>(type: "text", nullable: false),
                     Hint = table.Column<string>(type: "text", nullable: false),
                     Difficulty = table.Column<int>(type: "integer", nullable: false),
-                    Operand1Id = table.Column<int>(type: "integer", nullable: false),
-                    Operand2Id = table.Column<int>(type: "integer", nullable: false),
+                    Operand1Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Operand2Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Operation = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -106,6 +116,9 @@ namespace FractionsApp.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "FractionProblems");
+
+            migrationBuilder.DropTable(
+                name: "UserProgress");
 
             migrationBuilder.DropTable(
                 name: "Fractions");

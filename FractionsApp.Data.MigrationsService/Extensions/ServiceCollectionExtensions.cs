@@ -2,11 +2,8 @@ using FractionsApp.Shared.Data.Context;
 using FractionsApp.Shared.Data.Interfaces;
 using FractionsApp.Shared.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
-namespace FractionsApp.Data.Migrations.Extensions;
+namespace FractionsApp.Data.MigrationsService.Extensions;
 
 // TODO: USE AN EXTENSION BLOCK (PER C# 14) 
 public static class ServiceCollectionExtensions

@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-
 #nullable disable
 
-namespace FractionsApp.Data.Migrations
+namespace FractionsApp.Data.Migrations.Migrations
 {
     /// <inheritdoc />
-    public partial class FixOptionsValueComparer : Migration
+    public partial class UseDateTimeOffset : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

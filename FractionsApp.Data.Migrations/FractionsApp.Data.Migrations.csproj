@@ -16,8 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FractionsApp.Data.MigrationsService\FractionsApp.Data.MigrationsService.csproj" />
     <ProjectReference Include="..\FractionsApp.Shared\FractionsApp.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

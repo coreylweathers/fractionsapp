@@ -7,11 +7,10 @@ public class FractionsDbContextFactory : IDesignTimeDbContextFactory<FractionsDb
 {
     public FractionsDbContext CreateDbContext(string[] args)
     {
-        // For migrations only - real connection is configured through Aspire
         var connectionString = "Host=localhost;Database=fractions;Username=postgres;Password=postgres";
-
         var optionsBuilder = new DbContextOptionsBuilder<FractionsDbContext>();
-        optionsBuilder.UseNpgsql(connectionString);
+        optionsBuilder.UseNpgsql(connectionString, opts =>
+            opts.MigrationsAssembly("FractionsApp.Data.Migrations"));
         return new FractionsDbContext(optionsBuilder.Options);
     }
 }

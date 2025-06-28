@@ -9,29 +9,27 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace FractionsApp.Data.Migrations
+namespace FractionsApp.Data.Migrations.Migrations
 {
     [DbContext(typeof(FractionsDbContext))]
-    [Migration("20250505004523_AddProblemSetsAndFractions")]
-    partial class AddProblemSetsAndFractions
+    [Migration("20250628004543_UpdateDateFields")]
+    partial class UpdateDateFields
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.4")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("FractionsApp.Shared.Models.FractionModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<int>("Denominator")
                         .HasColumnType("integer");
@@ -46,11 +44,9 @@ namespace FractionsApp.Data.Migrations
 
             modelBuilder.Entity("FractionsApp.Shared.Models.FractionProblemModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Answer")
                         .IsRequired()
@@ -67,11 +63,11 @@ namespace FractionsApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Operand1Id")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("Operand1Id")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("Operand2Id")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("Operand2Id")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Operation")
                         .IsRequired()
@@ -81,8 +77,8 @@ namespace FractionsApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("ProblemSetId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ProblemSetId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Question")
                         .IsRequired()
@@ -101,11 +97,9 @@ namespace FractionsApp.Data.Migrations
 
             modelBuilder.Entity("FractionsApp.Shared.Models.ProblemSetModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -136,11 +130,9 @@ namespace FractionsApp.Data.Migrations
 
             modelBuilder.Entity("FractionsApp.Shared.Models.UserProgressModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("ActivityType")
                         .IsRequired()
@@ -151,18 +143,6 @@ namespace FractionsApp.Data.Migrations
 
                     b.Property<bool>("IsSynced")
                         .HasColumnType("boolean");
-
-                    b.Property<int>("LevelCompleted")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProblemsAttempted")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProblemsCorrect")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Score")
-                        .HasColumnType("integer");
 
                     b.Property<string>("UserId")
                         .IsRequired()

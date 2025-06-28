@@ -2,33 +2,53 @@ using FractionsApp.Shared.Data.Context;
 using FractionsApp.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FractionsApp.Data.Migrations.Initializers;
+namespace FractionsApp.Data.MigrationsService.Initializers;
 
-public static class DbInitializer
+public class DbInitializer : BackgroundService
 {
-    public static async Task SeedDatabaseAsync(FractionsDbContext context)
+    private readonly IDbContextFactory<FractionsDbContext> _factory;
+    private readonly IHostApplicationLifetime _applicationLifetime;
+
+    public DbInitializer(
+        IDbContextFactory<FractionsDbContext> factory,
+        IHostApplicationLifetime applicationLifetime)
     {
-        // Ensure database is created and migrations are applied
-        await context.Database.MigrateAsync();
-            
-        // Check if we already have problem sets
-        if (await context.ProblemSets.AnyAsync())
+        _factory = factory;
+        _applicationLifetime = applicationLifetime;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        await using var context = await _factory.CreateDbContextAsync(stoppingToken);
+
+        var strategy = context.Database.CreateExecutionStrategy();
+
+        await strategy.ExecuteAsync(async () =>
         {
-            return; // Database has been seeded already
-        }
-            
-        // Create sample problem sets
-        var problemSets = new List<ProblemSetModel>
-        {
+            await context.Database.MigrateAsync(stoppingToken);
+
+            if (await context.ProblemSets.AnyAsync(stoppingToken))
+                return;
+
+            var problemSets = CreateSampleProblemSets();
+
+            await context.ProblemSets.AddRangeAsync(problemSets, stoppingToken);
+            await context.SaveChangesAsync(stoppingToken);
+        });
+    }
+
+    private List<ProblemSetModel> CreateSampleProblemSets()
+    {
+        return [
             new ProblemSetModel
             {
                 Name = "Basic Fraction Addition",
                 Description = "Simple problems for learning to add fractions with the same denominator",
                 Difficulty = "Easy",
                 Category = "Addition",
-                CreatedDate = DateTime.Now,
-                Problems = new List<FractionProblemModel>
-                {
+                CreatedDate = DateTimeOffset.UtcNow,
+                Problems =
+                [
                     new FractionProblemModel
                     {
                         Question = "What is 1/4 + 2/4?",
@@ -53,7 +73,7 @@ public static class DbInitializer
                         Operand2 = new FractionModel { Numerator = 1, Denominator = 5 },
                         Operation = "+"
                     }
-                }
+                ]
             },
             new ProblemSetModel
             {
@@ -61,9 +81,9 @@ public static class DbInitializer
                 Description = "Simple problems for learning to subtract fractions with the same denominator",
                 Difficulty = "Easy",
                 Category = "Subtraction",
-                CreatedDate = DateTime.Now,
-                Problems = new List<FractionProblemModel>
-                {
+                CreatedDate = DateTimeOffset.UtcNow,
+                Problems =
+                [
                     new FractionProblemModel
                     {
                         Question = "What is 3/4 - 1/4?",
@@ -88,7 +108,7 @@ public static class DbInitializer
                         Operand2 = new FractionModel { Numerator = 2, Denominator = 6 },
                         Operation = "-"
                     }
-                }
+                ]
             },
             new ProblemSetModel
             {
@@ -96,9 +116,9 @@ public static class DbInitializer
                 Description = "Problems for learning to add fractions with different denominators",
                 Difficulty = "Medium",
                 Category = "Addition",
-                CreatedDate = DateTime.Now,
-                Problems = new List<FractionProblemModel>
-                {
+                CreatedDate = DateTimeOffset.UtcNow,
+                Problems =
+                [
                     new FractionProblemModel
                     {
                         Question = "What is 1/2 + 1/3?",
@@ -123,12 +143,8 @@ public static class DbInitializer
                         Operand2 = new FractionModel { Numerator = 3, Denominator = 4 },
                         Operation = "+"
                     }
-                }
+                ]
             }
-        };
-            
-        // Add problem sets to database
-        await context.ProblemSets.AddRangeAsync(problemSets);
-        await context.SaveChangesAsync();
+        ];
     }
 }
