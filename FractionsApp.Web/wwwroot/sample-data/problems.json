@@ -1,0 +1,12 @@
+{
+  "Question": "What is 3/5 + 1/5?",
+  "Answer": "4/5",
+  "Options": [
+      "4/5",
+      "4/10",
+      "3/10",
+      "2/5"
+  ],
+  "Explanation":"When adding fractions with the same denominator, add the numerators and keep the same denominator.",
+  "Hint":"Add the top numbers (numerators) and keep the bottom number (denominator) the same."
+}
